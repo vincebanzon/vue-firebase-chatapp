@@ -1,6 +1,10 @@
 <template>
   <div>
-    <div v-for="message in messages" :key="message">
+    <form @submit.prevent="sendMessage">
+      <input v-model="newMessage">
+      <button type="submit">Send</button>
+    </form>
+    <div v-for="message in messages" :key="message.id">
       <span>
         {{ message.message }}
       </span>
@@ -15,7 +19,9 @@ export default {
   name: 'HelloWorld',
   data() {
     return {
-      messages: []
+      messages: [],
+      newMessage: '',
+      name: ''
     }
   },
   created() {
@@ -34,6 +40,20 @@ export default {
         }
       })
     })
+  },
+  methods: {
+    sendMessage() {
+      db.collection('messages').add({
+        message: this.newMessage,
+        name: this.name,
+        timestamp: Date.now()
+      }).then(docRef => {
+        console.log('Message sent. ', docRef.id)
+        this.newMessage = ''
+      }).catch(error => {
+        console.error('Error: ', error)
+      })
+    }
   }
 }
 </script>
