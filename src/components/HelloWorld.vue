@@ -4,11 +4,7 @@
       <input v-model="newMessage">
       <button type="submit">Send</button>
     </form>
-    <div v-for="message in messages" :key="message.id">
-      <span>
-        {{ message.message }}
-      </span>
-    </div>
+    <span v-for="message in messages" :key="message.id">[{{ message.name }}]: {{ message.message }}<br></span>
   </div>
 </template>
 
@@ -43,17 +39,33 @@ export default {
   },
   methods: {
     sendMessage() {
-      db.collection('messages').add({
-        message: this.newMessage,
-        name: this.name,
-        timestamp: Date.now()
-      }).then(docRef => {
-        console.log('Message sent. ', docRef.id)
-        this.newMessage = ''
-      }).catch(error => {
-        console.error('Error: ', error)
-      })
+      if(this.name == null || this.name === '') {
+        this.askName()
+      } else {
+        db.collection('messages').add({
+          message: this.newMessage,
+          name: this.name,
+          timestamp: Date.now()
+        }).then(docRef => {
+          console.log('Message sent. ', docRef.id)
+          this.newMessage = ''
+        }).catch(error => {
+          console.error('Error: ', error)
+        })
+      }
+    },
+    askName() {
+      this.name = window.prompt("Hi! What's your name?")
     }
   }
 }
 </script>
+
+<style scoped>
+span {
+    text-align: left;
+    width: 100%;
+    display: block;
+    overflow-wrap: break-word;
+}
+</style>
