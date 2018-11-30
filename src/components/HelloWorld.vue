@@ -126,4 +126,13 @@ export default {
 .logbtn {
   float: right;
 }
+form {
+  display: flex;
+}
+form input {
+  flex: 11;
+}
+form button {
+  flex: 1;
+}
 </style>
