@@ -1,4 +1,4 @@
-import firebase from 'firebase/app'
+import firebase from 'firebase'
 import firestore from 'firebase/firestore'
 
 let config = {

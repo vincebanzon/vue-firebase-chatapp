@@ -1,8 +1,5 @@
 <template>
   <div id="app">
-    <h1>My Chat App</h1>
-    <h4>Vue.js using Firebase</h4>
-    <img alt="Vue logo" src="./assets/logo.png">
     <HelloWorld/>
   </div>
 </template>
@@ -25,7 +22,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 20px;
   min-width: 200px;
 }
 </style>
