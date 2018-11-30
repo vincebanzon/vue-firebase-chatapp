@@ -10,7 +10,7 @@
     <img alt="Vue logo" src="./../assets/logo.png">
     
 
-    <div class="messages">
+    <div class="messages" v-chat-scroll>
       <span v-for="message in messages" :key="message.id">[{{ message.name }}]: {{ message.message }}<br></span>
     </div>
     <form @submit.prevent="sendMessage">
