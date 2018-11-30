@@ -1,10 +1,12 @@
 <template>
-  <div>
+  <div class="hello">
     <form @submit.prevent="sendMessage">
       <input v-model="newMessage">
       <button type="submit">Send</button>
     </form>
-    <span v-for="message in messages" :key="message.id">[{{ message.name }}]: {{ message.message }}<br></span>
+    <div class="chat">
+      <span v-for="message in messages" :key="message.id">[{{ message.name }}]: {{ message.message }}<br></span>
+    </div>
   </div>
 </template>
 
@@ -62,10 +64,20 @@ export default {
 </script>
 
 <style scoped>
+.hello {
+  width: 50%;
+  margin: 0 auto;
+  min-width: 300px;
+  max-width: 720px;
+}
 span {
     text-align: left;
     width: 100%;
     display: block;
     overflow-wrap: break-word;
+}
+.chat {
+    height: 50vh;
+    overflow-y: auto;
 }
 </style>

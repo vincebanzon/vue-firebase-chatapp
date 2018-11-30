@@ -1,5 +1,7 @@
 <template>
   <div id="app">
+    <h1>My Chat App</h1>
+    <h4>Vue.js using Firebase</h4>
     <img alt="Vue logo" src="./assets/logo.png">
     <HelloWorld/>
   </div>
