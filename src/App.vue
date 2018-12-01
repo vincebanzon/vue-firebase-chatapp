@@ -6,6 +6,7 @@
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
+document.title = 'Vue Chatapp'
 
 export default {
   name: 'app',
